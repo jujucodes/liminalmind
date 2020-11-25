@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <title>liminal</title>
+</head>
+
+<body>
+    <a-scene>
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+        <a-assets>
+            <img src="assets/black.jpg" id="360photo">
+            <sound src="assets/houses.mp3" id="soundscape"></sound>
+        </a-assets>
+        <a-sky src="#360photo"></a-sky>
+        <a-entity position="0 1.8 -1" text="value: all media was created using AI along with a human guide;
+        color: #DDDDDD;
+        align: center;
+        wrapCount: 10;
+        width: 0.5" geometry="primitive: plane; width: auto; height: auto"
+            material="color: #DDDDDD; shader: flat; visible: false">
+        </a-entity>
+
+        <a-box color="#FFAA00" position="0 0.5 -4" material="visible: false"></a-box>
+        <a-entity id="blacksound" geometry="primitive: plane" position="-10 0 0"
+            sound="src: assets/houses.mp3; autoplay: true; loop: true;"></a-entity>
+    </a-scene>
+</body>
+
+</html>

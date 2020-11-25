@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <title>liminal</title>
+</head>
+
+<body>
+    <script>
+        AFRAME.registerComponent('box-item', {
+            init: function () {
+                var data = this.data;
+                var el = this.el; // <a-box>
+
+                el.addEventListener('mouseenter', function () {
+                    console.log("Mouse entered")
+                });
+
+                el.addEventListener('mouseleave', function () {
+                    console.log("Mouse left")
+                });
+
+                el.addEventListener('click', function () {
+                    window.location.href = 'nighttime.html';
+                });
+            }
+        });
+    </script>
+
+    <a-scene>
+        <a-camera>
+            <a-cursor></a-cursor>
+        </a-camera>
+        <a-entity id="camera" camera="userHeight: 1.6" look-controls cursor="rayOrigin: mouse"></a-entity>
+        <a-assets>
+            <img src="assets/indoor6.jpg" id="360photo">
+            <sound src="assets/indoor4soundscape.mp3" id="soundscape"></sound>
+        </a-assets>
+        <a-sky src="#360photo"></a-sky>
+        <a-entity position="0 1.8 -1" text="value: look behind you;
+        color: #DDDDDD;
+        align: center;
+        wrapCount: 10;
+        width: 0.5" geometry="primitive: plane; width: auto; height: auto"
+            material="color: #DDDDDD; shader: flat; visible: false"> </a-entity>
+        <!--<a-link href="nighttime.html" title="click"></a-link>-->
+        <a-box box-item color="#FFAA00" event-set__down="_event: mousedown; color: #FF1100" position="0 1.8 -1"
+            size="10" material="visible: false"></a-box>
+        <a-entity id="indoorsound" geometry="primitive: plane" position="-10 0 0"
+            sound="src: assets/indoor4soundscape.mp3; autoplay: true; loop: true;"></a-entity>
+        <a-entity id="indoorvoice" geometry="primitive: plane" material="visible:false" position="10 0 -5"
+            sound="src: assets/indoorliminal.mp3; autoplay: true; loop: true;"></a-entity>
+    </a-scene>
+</body>
+
+</html>
